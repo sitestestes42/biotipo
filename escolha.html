@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Grid dos wrappers */
+    /* Grid responsivo */
     .biotype-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -25,9 +25,11 @@
       gap: 16px;
     }
 
+    /* Card com proporção 9:16 */
     .biotype-card {
       width: 100%;
-      max-width: 350px;
+      max-width: 320px;
+      aspect-ratio: 9 / 16;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
@@ -38,17 +40,16 @@
     }
 
     .biotype-card:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
       box-shadow: 0 16px 50px rgba(255, 107, 53, 0.2);
       border-color: rgba(255, 107, 53, 0.6);
     }
 
     .biotype-card img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
       object-fit: cover;
-      aspect-ratio: 3/4; /* proporção retrato, ajustável */
+      display: block;
     }
 
     .biotype-wrapper h3 {
@@ -106,7 +107,7 @@
       box-shadow: 0 8px 20px rgba(108, 43, 217, 0.3);
     }
 
-    /* Responsivo */
+    /* Responsivo: tablet 2 colunas, mobile 1 coluna */
     @media (max-width: 900px) {
       .biotype-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -120,7 +121,7 @@
         gap: 30px;
       }
       .biotype-card {
-        max-width: 100%;
+        max-width: 400px; /* um pouco maior no mobile, mas ainda proporcional */
       }
     }
   </style>
@@ -150,6 +151,7 @@
             <div class="biotype-card">
               <img src="assets/ectomorfo.png" alt="Ectomorfo">
             </div>
+            <h3>ECTOMORFO</h3>
             <a href="resultado.html?biotipo=ectomorfo" class="btn">ESCOLHER</a>
           </div>
 
@@ -158,6 +160,7 @@
             <div class="biotype-card">
               <img src="assets/mesomorfo.png" alt="Mesomorfo">
             </div>
+            <h3>MESOMORFO</h3>
             <a href="resultado.html?biotipo=mesomorfo" class="btn">ESCOLHER</a>
           </div>
 
@@ -166,6 +169,7 @@
             <div class="biotype-card">
               <img src="assets/endomorfo.png" alt="Endomorfo">
             </div>
+            <h3>ENDOMORFO</h3>
             <a href="resultado.html?biotipo=endomorfo" class="btn">ESCOLHER</a>
           </div>
         </div>
