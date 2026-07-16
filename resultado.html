@@ -9,6 +9,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Garantir que a imagem no resultado fique redonda e com borda */
+    .resultado__image {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 30px rgba(248, 94, 58, 0.5);
+      background: var(--bg-card);
+    }
+    .resultado__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Ajuste para SVG se não usar imagem */
+    .resultado__image svg {
+      width: 100%;
+      height: 100%;
+      color: var(--primary);
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -34,7 +58,7 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer__bottom"><p>&copy; 2024 BioType.</p></div>
+    <div class="container footer__bottom"><p>&copy; 2024 BioType. Todos os direitos reservados.</p></div>
   </footer>
   <script src="script.js"></script>
 </body>
