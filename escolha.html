@@ -10,21 +10,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ==================== LAYOUT DA PÁGINA DE ESCOLHA ==================== */
-    .escolha-grid {
+    /* Grid dos cards */
+    .biotype-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
       margin-bottom: 2.5rem;
     }
 
     .biotype-card {
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
+      border-radius: 16px;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
       display: flex;
       flex-direction: column;
@@ -32,78 +32,83 @@
 
     .biotype-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 16px 50px rgba(255, 107, 53, 0.2);
-      border-color: #ff6b35;
+      box-shadow: 0 16px 50px rgba(255, 107, 53, 0.25);
+      border-color: rgba(255, 107, 53, 0.6);
     }
 
     .biotype-card img {
       width: 100%;
-      height: 220px;
+      height: 300px;
       object-fit: cover;
       display: block;
-      border-radius: 16px 16px 0 0;
     }
 
-    .card-content {
-      padding: 24px 20px 20px;
+    .card-footer {
+      padding: 20px;
       text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .card-content h2 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      color: #ffffff;
-      letter-spacing: -0.5px;
-    }
-
-    .card-content p {
-      font-size: 1rem;
-      color: #e0e0e0;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-      flex-grow: 1;
-    }
-
-    .card-content .btn {
-      align-self: center;
+      gap: 12px;
       margin-top: auto;
     }
 
-    /* Botão secundário "Não sabe?" */
-    .escolha-extra {
+    .card-footer h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 2px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .card-footer .btn {
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    /* Botão "Não sabe?" */
+    .quiz-link {
       text-align: center;
       margin-top: 1rem;
     }
 
-    .escolha-extra .btn {
-      background: rgba(108, 43, 217, 0.1);
+    .quiz-link .btn {
+      background: transparent;
       border: 2px solid #6c2bd9;
       color: #ffffff;
       padding: 12px 30px;
       border-radius: 50px;
       font-weight: 600;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .escolha-extra .btn:hover {
+    .quiz-link .btn:hover {
       background: #6c2bd9;
       border-color: #6c2bd9;
       transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(108, 43, 217, 0.3);
     }
 
-    /* Ajustes responsivos */
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .biotype-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 600px) {
-      .escolha-grid {
+      .biotype-grid {
         grid-template-columns: 1fr;
         gap: 20px;
       }
 
       .biotype-card img {
-        height: 200px;
+        height: 250px; /* um pouco menor em mobile, mas ainda grande */
       }
     }
   </style>
@@ -125,45 +130,40 @@
     <section class="escolha section">
       <div class="container">
         <h1 class="section__title fade-in-up">ESCOLHA SEU <span class="text-gradient">BIOTIPO</span></h1>
-        <p class="section__subtitle fade-in-up delay-1">Selecione abaixo e veja as recomendações personalizadas</p>
+        <p class="section__subtitle fade-in-up delay-1">Selecione o corpo que mais se parece com o seu</p>
 
-        <!-- Grid de cards -->
-        <div class="escolha-grid fade-in-up delay-2">
+        <div class="biotype-grid fade-in-up delay-2">
           <!-- Ectomorfo -->
           <div class="biotype-card">
-            <img src="assets/ectomorfo.png" alt="Corpo magro e alongado representando o biotipo ectomorfo">
-            <div class="card-content">
-              <h2>ECTOMORFO</h2>
-              <p>Magro de natureza, metabolismo acelerado</p>
+            <img src="assets/ectomorfo.png" alt="Ectomorfo - corpo magro e alongado">
+            <div class="card-footer">
+              <h3>ECTOMORFO</h3>
               <a href="resultado.html?biotipo=ectomorfo" class="btn btn--primary">ESCOLHER</a>
             </div>
           </div>
 
           <!-- Mesomorfo -->
           <div class="biotype-card">
-            <img src="assets/mesomorfo.png" alt="Corpo atlético e musculoso representando o biotipo mesomorfo">
-            <div class="card-content">
-              <h2>MESOMORFO</h2>
-              <p>Atleta natural, facilidade para ganhar massa</p>
+            <img src="assets/mesomorfo.png" alt="Mesomorfo - corpo atlético e musculoso">
+            <div class="card-footer">
+              <h3>MESOMORFO</h3>
               <a href="resultado.html?biotipo=mesomorfo" class="btn btn--primary">ESCOLHER</a>
             </div>
           </div>
 
           <!-- Endomorfo -->
           <div class="biotype-card">
-            <img src="assets/endomorfo.png" alt="Corpo mais largo e forte representando o biotipo endomorfo">
-            <div class="card-content">
-              <h2>ENDOMORFO</h2>
-              <p>Tendência a acumular gordura, metabolismo lento</p>
+            <img src="assets/endomorfo.png" alt="Endomorfo - corpo forte e mais largo">
+            <div class="card-footer">
+              <h3>ENDOMORFO</h3>
               <a href="resultado.html?biotipo=endomorfo" class="btn btn--primary">ESCOLHER</a>
             </div>
           </div>
         </div>
 
-        <!-- Botão extra -->
-        <div class="escolha-extra fade-in-up delay-3">
+        <div class="quiz-link fade-in-up delay-3">
           <a href="questionario.html" class="btn">
-            <i class="fa-solid fa-question-circle"></i> NÃO SABE? FAÇA O TESTE!
+            <i class="fa-solid fa-circle-question"></i> NÃO SABE? FAÇA O TESTE!
           </a>
         </div>
       </div>
