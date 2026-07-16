@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escolha seu Biotipo | BioType</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo"><i class="fa-solid fa-dumbbell"></i> BioType</a>
+      <ul class="nav__list">
+        <li><a href="index.html" class="nav__link">Início</a></li>
+        <li><a href="escolha.html" class="nav__link active">Escolher Biotipo</a></li>
+        <li><a href="questionario.html" class="nav__link">Fazer Teste</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="escolha section">
+      <div class="container">
+        <h1 class="section__title fade-in-up">ESCOLHA SEU <span class="text-gradient">BIOTIPO</span></h1>
+        <p class="section__subtitle fade-in-up delay-1">Selecione abaixo e veja as recomendações personalizadas</p>
+        <div class="biotype-cards">
+          <!-- Ectomorfo -->
+          <div class="biotype-card fade-in-up delay-1" data-biotipo="ectomorfo">
+            <div class="biotype-card__image">
+              <svg viewBox="0 0 100 200" class="body-silhouette">
+                <!-- Ectomorfo: corpo alongado e fino -->
+                <ellipse cx="50" cy="20" rx="10" ry="12" fill="currentColor" opacity="0.3"/>
+                <rect x="38" y="30" width="24" height="80" rx="10" fill="currentColor" opacity="0.3"/>
+                <line x1="30" y1="45" x2="10" y2="30" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.3"/>
+                <line x1="70" y1="45" x2="90" y2="30" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.3"/>
+                <line x1="38" y1="110" x2="25" y2="170" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+                <line x1="62" y1="110" x2="75" y2="170" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+              </svg>
+            </div>
+            <h2>ECTOMORFO</h2>
+            <p>Magro de natureza, metabolismo acelerado</p>
+            <a href="resultado.html?biotipo=ectomorfo" class="btn btn--primary">ESCOLHER</a>
+          </div>
+          <!-- Mesomorfo -->
+          <div class="biotype-card fade-in-up delay-2" data-biotipo="mesomorfo">
+            <div class="biotype-card__image">
+              <svg viewBox="0 0 100 200" class="body-silhouette">
+                <!-- Mesomorfo: corpo atlético, ombros largos -->
+                <ellipse cx="50" cy="20" rx="12" ry="13" fill="currentColor" opacity="0.3"/>
+                <rect x="32" y="30" width="36" height="80" rx="12" fill="currentColor" opacity="0.3"/>
+                <line x1="30" y1="45" x2="5" y2="35" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity="0.3"/>
+                <line x1="70" y1="45" x2="95" y2="35" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity="0.3"/>
+                <line x1="35" y1="110" x2="20" y2="170" stroke="currentColor" stroke-width="9" stroke-linecap="round" opacity="0.3"/>
+                <line x1="65" y1="110" x2="80" y2="170" stroke="currentColor" stroke-width="9" stroke-linecap="round" opacity="0.3"/>
+              </svg>
+            </div>
+            <h2>MESOMORFO</h2>
+            <p>Atleta natural, facilidade para ganhar massa</p>
+            <a href="resultado.html?biotipo=mesomorfo" class="btn btn--primary">ESCOLHER</a>
+          </div>
+          <!-- Endomorfo -->
+          <div class="biotype-card fade-in-up delay-3" data-biotipo="endomorfo">
+            <div class="biotype-card__image">
+              <svg viewBox="0 0 100 200" class="body-silhouette">
+                <!-- Endomorfo: corpo mais largo e arredondado -->
+                <ellipse cx="50" cy="20" rx="14" ry="14" fill="currentColor" opacity="0.3"/>
+                <rect x="28" y="30" width="44" height="80" rx="18" fill="currentColor" opacity="0.3"/>
+                <line x1="25" y1="45" x2="0" y2="40" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+                <line x1="75" y1="45" x2="100" y2="40" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+                <line x1="30" y1="110" x2="18" y2="170" stroke="currentColor" stroke-width="10" stroke-linecap="round" opacity="0.3"/>
+                <line x1="70" y1="110" x2="82" y2="170" stroke="currentColor" stroke-width="10" stroke-linecap="round" opacity="0.3"/>
+              </svg>
+            </div>
+            <h2>ENDOMORFO</h2>
+            <p>Tendência a acumular gordura, metabolismo lento</p>
+            <a href="resultado.html?biotipo=endomorfo" class="btn btn--primary">ESCOLHER</a>
+          </div>
+        </div>
+        <div class="text-center mt-2 fade-in-up delay-4">
+          <a href="questionario.html" class="btn btn--secondary"><i class="fa-solid fa-question-circle"></i> NÃO SABE? FAÇA O TESTE!</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom"><p>&copy; 2024 BioType.</p></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

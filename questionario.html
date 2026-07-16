@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionário do Biotipo | BioType</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo"><i class="fa-solid fa-dumbbell"></i> BioType</a>
+      <ul class="nav__list">
+        <li><a href="index.html" class="nav__link">Início</a></li>
+        <li><a href="escolha.html" class="nav__link">Escolher Biotipo</a></li>
+        <li><a href="questionario.html" class="nav__link active">Fazer Teste</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="quiz section">
+      <div class="container">
+        <h1 class="section__title fade-in-up">DESCUBRA SEU <span class="text-gradient">BIOTIPO</span></h1>
+        <p class="section__subtitle fade-in-up delay-1">Responda as perguntas abaixo e descubra qual é o seu biotipo</p>
+
+        <!-- Barra de progresso -->
+        <div class="progress-bar fade-in-up delay-2" aria-label="Progresso do questionário" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-bar__fill" id="progressFill"></div>
+          <span class="progress-bar__text" id="progressText">Pergunta 1/10</span>
+        </div>
+
+        <!-- Container das perguntas -->
+        <div id="quiz-container" class="quiz__container fade-in-up delay-3">
+          <!-- As perguntas serão geradas dinamicamente pelo JavaScript -->
+        </div>
+
+        <!-- Botão de navegação -->
+        <div class="quiz__actions fade-in-up delay-4">
+          <button id="nextBtn" class="btn btn--primary" disabled>
+            <span id="nextBtnText">PRÓXIMA PERGUNTA</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom"><p>&copy; 2024 BioType.</p></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
