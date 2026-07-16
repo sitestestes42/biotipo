@@ -1,4 +1,4 @@
-[<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -11,40 +11,6 @@
   <link rel="stylesheet" href="style.css">
   <style>
     /* ==================== ESTILOS ESPECÍFICOS DA PÁGINA DE ESCOLHA ==================== */
-    /* Ajuste dos cards para usar imagens reais */
-    .biotype-card__image {
-      width: 220px;
-      height: 220px;
-      margin: 0 auto 1.5rem;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(255, 107, 53, 0.3);
-      transition: all var(--transition);
-      position: relative;
-      background: rgba(255,255,255,0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .biotype-card__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    /* Efeito hover no card */
-    .biotype-card:hover .biotype-card__image {
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(108, 43, 217, 0.5);
-    }
-
-    .biotype-card:hover .biotype-card__image img {
-      transform: scale(1.05);
-    }
-
-    /* Para manter o layout consistente com o resto do site */
     .biotype-cards {
       display: flex;
       justify-content: center;
@@ -58,13 +24,11 @@
       backdrop-filter: blur(12px);
       border: 1px solid var(--glass-border);
       border-radius: 24px;
-      padding: 2.5rem 2rem;
-      text-align: center;
+      overflow: hidden; /* garante que a imagem respeite o border-radius do card */
       width: 300px;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
       display: flex;
       flex-direction: column;
-      align-items: center;
     }
 
     .biotype-card:hover {
@@ -73,32 +37,54 @@
       border-color: var(--primary);
     }
 
+    /* Container da imagem – retangular */
+    .biotype-card__image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .biotype-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px 12px 0 0; /* bordas arredondadas apenas no topo, combinando com o card */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .biotype-card:hover .biotype-card__image img {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    /* Área de texto e botão */
     .biotype-card h2 {
       font-size: 1.8rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      margin: 1.5rem 1.5rem 0.5rem;
       color: var(--text-light);
     }
 
     .biotype-card p {
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      margin: 0 1.5rem 1.5rem;
       font-size: 1rem;
+      flex-grow: 1;
     }
 
     .biotype-card .btn {
-      margin-top: auto; /* empurra o botão para baixo */
+      margin: 0 1.5rem 1.5rem;
     }
 
+    /* Responsivo */
     @media (max-width: 768px) {
-      .biotype-card__image {
-        width: 180px;
-        height: 180px;
-      }
-
       .biotype-card {
         width: 260px;
-        padding: 2rem 1.5rem;
+      }
+      .biotype-card__image {
+        height: 180px;
       }
     }
 
@@ -133,7 +119,7 @@
           <!-- Ectomorfo -->
           <div class="biotype-card fade-in-up delay-1">
             <div class="biotype-card__image">
-              <img src="assets/images/ectomorfo.png" alt="Corpo magro e alongado representando o biotipo ectomorfo">
+              <img src="assets/ectomorfo.png" alt="Corpo magro e alongado representando o biotipo ectomorfo">
             </div>
             <h2>ECTOMORFO</h2>
             <p>Magro de natureza, metabolismo acelerado</p>
@@ -153,7 +139,7 @@
           <!-- Endomorfo -->
           <div class="biotype-card fade-in-up delay-3">
             <div class="biotype-card__image">
-              <img src="assets/images/endomorfo.png" alt="Corpo mais largo e forte representando o biotipo endomorfo">
+              <img src="assets/endomorfo.png" alt="Corpo mais largo e forte representando o biotipo endomorfo">
             </div>
             <h2>ENDOMORFO</h2>
             <p>Tendência a acumular gordura, metabolismo lento</p>
