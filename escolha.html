@@ -10,90 +10,100 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ==================== ESTILOS ESPECÍFICOS DA PÁGINA DE ESCOLHA ==================== */
-    .biotype-cards {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
+    /* ==================== LAYOUT DA PÁGINA DE ESCOLHA ==================== */
+    .escolha-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 2.5rem;
     }
 
     .biotype-card {
-      background: var(--glass-bg);
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px;
-      overflow: hidden; /* garante que a imagem respeite o border-radius do card */
-      width: 300px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
       display: flex;
       flex-direction: column;
     }
 
     .biotype-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-      border-color: var(--primary);
+      transform: translateY(-8px);
+      box-shadow: 0 16px 50px rgba(255, 107, 53, 0.2);
+      border-color: #ff6b35;
     }
 
-    /* Container da imagem – retangular */
-    .biotipo-card img {
+    .biotype-card img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-      display: block;
-    }
-
-    .biotype-card__image img {
-      width: 100%;
-      height: 100%;
+      height: 220px;
       object-fit: cover;
       display: block;
-      border-radius: 12px 12px 0 0; /* bordas arredondadas apenas no topo, combinando com o card */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-radius: 16px 16px 0 0;
     }
 
-    .biotype-card:hover .biotype-card__image img {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
-
-    /* Área de texto e botão */
-    .biotype-card h2 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin: 1.5rem 1.5rem 0.5rem;
-      color: var(--text-light);
-    }
-
-    .biotype-card p {
-      color: var(--text-muted);
-      margin: 0 1.5rem 1.5rem;
-      font-size: 1rem;
+    .card-content {
+      padding: 24px 20px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
       flex-grow: 1;
     }
 
-    .biotype-card .btn {
-      margin: 0 1.5rem 1.5rem;
+    .card-content h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+      letter-spacing: -0.5px;
     }
 
-    /* Responsivo */
-    @media (max-width: 768px) {
-      .biotype-card {
-        width: 260px;
-      }
-      .biotype-card__image {
-        height: 180px;
-      }
+    .card-content p {
+      font-size: 1rem;
+      color: #e0e0e0;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+      flex-grow: 1;
     }
 
-    @media (max-width: 480px) {
-      .biotype-card {
-        width: 100%;
-        max-width: 320px;
+    .card-content .btn {
+      align-self: center;
+      margin-top: auto;
+    }
+
+    /* Botão secundário "Não sabe?" */
+    .escolha-extra {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .escolha-extra .btn {
+      background: rgba(108, 43, 217, 0.1);
+      border: 2px solid #6c2bd9;
+      color: #ffffff;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .escolha-extra .btn:hover {
+      background: #6c2bd9;
+      border-color: #6c2bd9;
+      transform: translateY(-2px);
+    }
+
+    /* Ajustes responsivos */
+    @media (max-width: 600px) {
+      .escolha-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .biotype-card img {
+        height: 200px;
       }
     }
   </style>
@@ -117,40 +127,42 @@
         <h1 class="section__title fade-in-up">ESCOLHA SEU <span class="text-gradient">BIOTIPO</span></h1>
         <p class="section__subtitle fade-in-up delay-1">Selecione abaixo e veja as recomendações personalizadas</p>
 
-        <div class="biotype-cards">
+        <!-- Grid de cards -->
+        <div class="escolha-grid fade-in-up delay-2">
           <!-- Ectomorfo -->
-          <div class="biotype-card fade-in-up delay-1">
-            <div class="biotype-card__image">
-              <img src="assets/ectomorfo.png" alt="Corpo magro e alongado representando o biotipo ectomorfo">
+          <div class="biotype-card">
+            <img src="assets/ectomorfo.png" alt="Corpo magro e alongado representando o biotipo ectomorfo">
+            <div class="card-content">
+              <h2>ECTOMORFO</h2>
+              <p>Magro de natureza, metabolismo acelerado</p>
+              <a href="resultado.html?biotipo=ectomorfo" class="btn btn--primary">ESCOLHER</a>
             </div>
-            <h2>ECTOMORFO</h2>
-            <p>Magro de natureza, metabolismo acelerado</p>
-            <a href="resultado.html?biotipo=ectomorfo" class="btn btn--primary">ESCOLHER</a>
           </div>
 
           <!-- Mesomorfo -->
-          <div class="biotype-card fade-in-up delay-2">
-            <div class="biotype-card__image">
-              <img src="assets/mesomorfo.png" alt="Corpo atlético e musculoso representando o biotipo mesomorfo">
+          <div class="biotype-card">
+            <img src="assets/mesomorfo.png" alt="Corpo atlético e musculoso representando o biotipo mesomorfo">
+            <div class="card-content">
+              <h2>MESOMORFO</h2>
+              <p>Atleta natural, facilidade para ganhar massa</p>
+              <a href="resultado.html?biotipo=mesomorfo" class="btn btn--primary">ESCOLHER</a>
             </div>
-            <h2>MESOMORFO</h2>
-            <p>Atleta natural, facilidade para ganhar massa</p>
-            <a href="resultado.html?biotipo=mesomorfo" class="btn btn--primary">ESCOLHER</a>
           </div>
 
           <!-- Endomorfo -->
-          <div class="biotype-card fade-in-up delay-3">
-            <div class="biotype-card__image">
-              <img src="assets/endomorfo.png" alt="Corpo mais largo e forte representando o biotipo endomorfo">
+          <div class="biotype-card">
+            <img src="assets/endomorfo.png" alt="Corpo mais largo e forte representando o biotipo endomorfo">
+            <div class="card-content">
+              <h2>ENDOMORFO</h2>
+              <p>Tendência a acumular gordura, metabolismo lento</p>
+              <a href="resultado.html?biotipo=endomorfo" class="btn btn--primary">ESCOLHER</a>
             </div>
-            <h2>ENDOMORFO</h2>
-            <p>Tendência a acumular gordura, metabolismo lento</p>
-            <a href="resultado.html?biotipo=endomorfo" class="btn btn--primary">ESCOLHER</a>
           </div>
         </div>
 
-        <div class="text-center mt-2 fade-in-up delay-4">
-          <a href="questionario.html" class="btn btn--secondary">
+        <!-- Botão extra -->
+        <div class="escolha-extra fade-in-up delay-3">
+          <a href="questionario.html" class="btn">
             <i class="fa-solid fa-question-circle"></i> NÃO SABE? FAÇA O TESTE!
           </a>
         </div>
