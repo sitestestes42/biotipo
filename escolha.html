@@ -10,119 +10,130 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Grid responsivo */
+  /* ==================== GRID E LAYOUT ==================== */
+  .biotype-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 2.5rem;
+  }
+
+  .biotype-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* ==================== CARD (IMAGEM PURA) ==================== */
+  .biotype-card {
+    width: 100% !important;
+    max-width: 320px !important;
+    aspect-ratio: 9 / 16 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    background: none !important;         /* remove qualquer fundo */
+    border: none !important;             /* remove qualquer borda */
+    padding: 0 !important;               /* remove padding interno */
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  .biotype-card:hover {
+    transform: scale(1.03) !important;
+    box-shadow: 0 16px 50px rgba(255, 107, 53, 0.2) !important;
+  }
+
+  /* ==================== IMAGEM DENTRO DO CARD ==================== */
+  .biotype-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;        /* preenche sem distorcer */
+    display: block !important;           /* elimina espaço extra abaixo */
+    max-width: none !important;          /* anula max-width:100% global */
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;         /* a borda arredondada é do card */
+  }
+
+  /* ==================== TÍTULO E BOTÃO ==================== */
+  .biotype-wrapper h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .biotype-wrapper .btn {
+    padding: 12px 40px;
+    background: #ff6b35;
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .biotype-wrapper .btn:hover {
+    background: #e85a2a;
+    transform: translateY(-2px);
+  }
+
+  /* ==================== BOTÃO "NÃO SABE?" ==================== */
+  .quiz-link {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .quiz-link .btn-outline {
+    background: transparent;
+    border: 2px solid #6c2bd9;
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+  }
+
+  .quiz-link .btn-outline:hover {
+    background: #6c2bd9;
+    border-color: #6c2bd9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(108, 43, 217, 0.3);
+  }
+
+  /* ==================== RESPONSIVO ==================== */
+  @media (max-width: 900px) {
     .biotype-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .biotype-grid {
+      grid-template-columns: 1fr;
       gap: 30px;
-      margin-bottom: 2.5rem;
     }
-
-    .biotype-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    /* Card com proporção 9:16 */
     .biotype-card {
-      width: 100%;
-      max-width: 320px;
-      aspect-ratio: 9 / 16;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* removido background e border */
+      max-width: 400px !important;
     }
-
-    .biotype-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 16px 50px rgba(255, 107, 53, 0.2);
-      border-color: rgba(255, 107, 53, 0.6);
-    }
-
-    .biotype-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .biotype-wrapper h3 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: 2px;
-      margin: 0;
-      text-transform: uppercase;
-    }
-
-    .biotype-wrapper .btn {
-      padding: 12px 40px;
-      background: #ff6b35;
-      color: #fff;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: background 0.3s, transform 0.2s;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .biotype-wrapper .btn:hover {
-      background: #e85a2a;
-      transform: translateY(-2px);
-    }
-
-    /* Botão "Não sabe?" */
-    .quiz-link {
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .quiz-link .btn-outline {
-      background: transparent;
-      border: 2px solid #6c2bd9;
-      color: #ffffff;
-      padding: 12px 30px;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1rem;
-    }
-
-    .quiz-link .btn-outline:hover {
-      background: #6c2bd9;
-      border-color: #6c2bd9;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(108, 43, 217, 0.3);
-    }
-
-    /* Responsivo: tablet 2 colunas, mobile 1 coluna */
-    @media (max-width: 900px) {
-      .biotype-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .biotype-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      .biotype-card {
-        max-width: 400px; /* um pouco maior no mobile, mas ainda proporcional */
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
   <header class="header">
