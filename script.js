@@ -95,8 +95,6 @@ function initPageSpecific() {
   fadeElements.forEach(el => {
     observer.observe(el);
   });
-
-  // Efeito de hover nos cards de biotipo (já está no CSS)
 }
 
 // Executa ao carregar a página
@@ -213,15 +211,18 @@ function initResultado() {
   const params = new URLSearchParams(window.location.search);
   let biotipo = params.get('biotipo');
   
+  // Se não veio da URL, tenta do sessionStorage
   if (!biotipo) {
     biotipo = sessionStorage.getItem('biotipo');
   }
 
+  // Validação
   if (!['ectomorfo', 'mesomorfo', 'endomorfo'].includes(biotipo)) {
     document.getElementById('resultado-content').innerHTML = `<p>Biotipo não encontrado. <a href="questionario.html">Faça o teste novamente</a>.</p>`;
     return;
   }
 
+  // Dados de cada biotipo
   const dados = {
     ectomorfo: {
       nome: 'ECTOMORFO',
@@ -231,7 +232,7 @@ function initResultado() {
       treino: 'Treinos curtos e intensos (45-60 min), foco em exercícios compostos pesados (agachamento, supino, levantamento terra). Menos cardio, mais descanso entre séries. Frequência: 3-4x por semana.',
       alimentacao: 'Dieta hipercalórica com superávit de 500-700 kcal/dia. Rica em carboidratos complexos (aveia, batata doce, arroz integral) e proteínas (2g/kg). Refeições frequentes a cada 3h.',
       depoimento: '"Sempre fui magro e achava que era genética. Depois de ajustar meu treino para ectomorfo, ganhei 8kg em 3 meses!" — Lucas S.',
-      imagem: 'assets/ectomorfo.png'
+      imagem: 'assets/ectomorfo2.png'
     },
     mesomorfo: {
       nome: 'MESOMORFO',
@@ -241,7 +242,7 @@ function initResultado() {
       treino: 'Treinos variados e progressivos. Combine musculação pesada (4-5x semana) com cardio moderado (2-3x). Varie entre hipertrofia e força para evitar platôs.',
       alimentacao: 'Dieta balanceada: 40% carboidratos, 35% proteínas, 25% gorduras saudáveis. Leve superávit calórico para ganho de massa (300-500 kcal). Hidratação abundante.',
       depoimento: '"O teste revelou que sou mesomorfo. Agora treino de forma otimizada e meu shape evoluiu muito mais rápido." — Marina C.',
-      imagem: 'assets/mesomorfo.png'
+      imagem: 'assets/mesomorfo2.png'
     },
     endomorfo: {
       nome: 'ENDOMORFO',
@@ -251,7 +252,7 @@ function initResultado() {
       treino: 'Treinos intensos e dinâmicos, com pouco descanso entre séries. Intercale musculação com HIIT (3-4x semana). Circuitos e treinos metabólicos são ideais. Cardio pós-treino.',
       alimentacao: 'Dieta low carb ou cetogênica pode ser eficaz. Priorize proteínas magras, gorduras boas (abacate, azeite) e vegetais fibrosos. Evite açúcares e farinhas refinadas.',
       depoimento: '"Sempre lutei contra a balança. Depois de entender meu biotipo endomorfo, perdi 12kg com as dicas de alimentação." — Rafael A.',
-      imagem: 'assets/endomorfo.png'
+      imagem: 'assets/endomorfo2.png'
     }
   };
 
@@ -303,37 +304,4 @@ function initResultado() {
   `;
 
   document.getElementById('resultado-content').innerHTML = html;
-}
-function getBodySVG(biotipo) {
-  if (biotipo === 'ectomorfo') {
-    return `
-      <svg viewBox="0 0 100 200" class="body-silhouette">
-        <ellipse cx="50" cy="20" rx="10" ry="12" fill="currentColor" opacity="0.3"/>
-        <rect x="38" y="30" width="24" height="80" rx="10" fill="currentColor" opacity="0.3"/>
-        <line x1="30" y1="45" x2="10" y2="30" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.3"/>
-        <line x1="70" y1="45" x2="90" y2="30" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.3"/>
-        <line x1="38" y1="110" x2="25" y2="170" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
-        <line x1="62" y1="110" x2="75" y2="170" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
-      </svg>`;
-  } else if (biotipo === 'mesomorfo') {
-    return `
-      <svg viewBox="0 0 100 200" class="body-silhouette">
-        <ellipse cx="50" cy="20" rx="12" ry="13" fill="currentColor" opacity="0.3"/>
-        <rect x="32" y="30" width="36" height="80" rx="12" fill="currentColor" opacity="0.3"/>
-        <line x1="30" y1="45" x2="5" y2="35" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity="0.3"/>
-        <line x1="70" y1="45" x2="95" y2="35" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity="0.3"/>
-        <line x1="35" y1="110" x2="20" y2="170" stroke="currentColor" stroke-width="9" stroke-linecap="round" opacity="0.3"/>
-        <line x1="65" y1="110" x2="80" y2="170" stroke="currentColor" stroke-width="9" stroke-linecap="round" opacity="0.3"/>
-      </svg>`;
-  } else {
-    return `
-      <svg viewBox="0 0 100 200" class="body-silhouette">
-        <ellipse cx="50" cy="20" rx="14" ry="14" fill="currentColor" opacity="0.3"/>
-        <rect x="28" y="30" width="44" height="80" rx="18" fill="currentColor" opacity="0.3"/>
-        <line x1="25" y1="45" x2="0" y2="40" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
-        <line x1="75" y1="45" x2="100" y2="40" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
-        <line x1="30" y1="110" x2="18" y2="170" stroke="currentColor" stroke-width="10" stroke-linecap="round" opacity="0.3"/>
-        <line x1="70" y1="110" x2="82" y2="170" stroke="currentColor" stroke-width="10" stroke-linecap="round" opacity="0.3"/>
-      </svg>`;
-  }
 }
