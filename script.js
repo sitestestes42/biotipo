@@ -213,18 +213,15 @@ function initResultado() {
   const params = new URLSearchParams(window.location.search);
   let biotipo = params.get('biotipo');
   
-  // Se não veio da URL, tenta do sessionStorage
   if (!biotipo) {
     biotipo = sessionStorage.getItem('biotipo');
   }
 
-  // Validação
   if (!['ectomorfo', 'mesomorfo', 'endomorfo'].includes(biotipo)) {
     document.getElementById('resultado-content').innerHTML = `<p>Biotipo não encontrado. <a href="questionario.html">Faça o teste novamente</a>.</p>`;
     return;
   }
 
-  // Dados de cada biotipo
   const dados = {
     ectomorfo: {
       nome: 'ECTOMORFO',
@@ -233,7 +230,8 @@ function initResultado() {
       pontosAtencao: 'Dificuldade em ganhar massa magra, risco de catabolismo se alimentação for insuficiente.',
       treino: 'Treinos curtos e intensos (45-60 min), foco em exercícios compostos pesados (agachamento, supino, levantamento terra). Menos cardio, mais descanso entre séries. Frequência: 3-4x por semana.',
       alimentacao: 'Dieta hipercalórica com superávit de 500-700 kcal/dia. Rica em carboidratos complexos (aveia, batata doce, arroz integral) e proteínas (2g/kg). Refeições frequentes a cada 3h.',
-      imagem: 'ectomorfo'
+      depoimento: '"Sempre fui magro e achava que era genética. Depois de ajustar meu treino para ectomorfo, ganhei 8kg em 3 meses!" — Lucas S.',
+      imagem: 'assets/ectomorfo.png'
     },
     mesomorfo: {
       nome: 'MESOMORFO',
@@ -242,7 +240,8 @@ function initResultado() {
       pontosAtencao: 'Pode negligenciar a dieta por achar que "tudo funciona", mas excessos levam a acúmulo de gordura.',
       treino: 'Treinos variados e progressivos. Combine musculação pesada (4-5x semana) com cardio moderado (2-3x). Varie entre hipertrofia e força para evitar platôs.',
       alimentacao: 'Dieta balanceada: 40% carboidratos, 35% proteínas, 25% gorduras saudáveis. Leve superávit calórico para ganho de massa (300-500 kcal). Hidratação abundante.',
-      imagem: 'mesomorfo'
+      depoimento: '"O teste revelou que sou mesomorfo. Agora treino de forma otimizada e meu shape evoluiu muito mais rápido." — Marina C.',
+      imagem: 'assets/mesomorfo.png'
     },
     endomorfo: {
       nome: 'ENDOMORFO',
@@ -250,29 +249,29 @@ function initResultado() {
       pontosFortes: 'Ganho de força e massa muscular rápido, estrutura robusta, boa recuperação muscular.',
       pontosAtencao: 'Dificuldade em perder gordura, tendência a reter líquidos, necessidade de disciplina alimentar rigorosa.',
       treino: 'Treinos intensos e dinâmicos, com pouco descanso entre séries. Intercale musculação com HIIT (3-4x semana). Circuitos e treinos metabólicos são ideais. Cardio pós-treino.',
-      alimentacao: 'Dieta low carb ou cetogênica pode ser eficaz. Priorize proteínas magras, gorduras boas (abacate, azeite) e vegetais fibrosos. Evite açúcares e farinhas refinadas. Refeições menores e mais frequentes.',
-      imagem: 'endomorfo'
+      alimentacao: 'Dieta low carb ou cetogênica pode ser eficaz. Priorize proteínas magras, gorduras boas (abacate, azeite) e vegetais fibrosos. Evite açúcares e farinhas refinadas.',
+      depoimento: '"Sempre lutei contra a balança. Depois de entender meu biotipo endomorfo, perdi 12kg com as dicas de alimentação." — Rafael A.',
+      imagem: 'assets/endomorfo.png'
     }
   };
 
   const info = dados[biotipo];
-  const imagemSVG = getBodySVG(biotipo);
 
   const html = `
     <div class="resultado__card">
       <div class="resultado__image">
-        ${imagemSVG}
+        <img src="${info.imagem}" alt="${info.nome}">
       </div>
       <h1 class="resultado__title">SEU BIOTIPO É <span class="text-gradient">${info.nome}</span>!</h1>
       <p class="resultado__desc">${info.desc}</p>
 
       <div class="resultado__info">
         <div class="resultado__box">
-          <h3><i class="fa-solid fa-circle-check"></i> Pontos Fortes</h3>
+          <h3><i class="fa-solid fa-check-circle"></i> Pontos Fortes</h3>
           <p>${info.pontosFortes}</p>
         </div>
         <div class="resultado__box">
-          <h3><i class="fa-solid fa-triangle-exclamation"></i> Pontos de Atenção</h3>
+          <h3><i class="fa-solid fa-exclamation-triangle"></i> Pontos de Atenção</h3>
           <p>${info.pontosAtencao}</p>
         </div>
         <div class="resultado__box">
@@ -285,20 +284,26 @@ function initResultado() {
         </div>
       </div>
 
+      <div class="resultado__depoimento">
+        <p><i class="fa-solid fa-quote-left" style="color: var(--primary); margin-right: 0.5rem;"></i>${info.depoimento}</p>
+      </div>
+
       <div class="resultado__actions">
-        <a href="https://pay.kiwify.com.br/SEU_LINK_AQUI" target="_blank" class="btn btn--primary btn--pulse btn--lg">
+        <a href="https://pay.kiwify.com.br/SEU_LINK_AQUI" target="_blank" class="btn btn--primary btn--lg btn--pulse">
           <i class="fa-solid fa-book-open"></i> QUERO O GUIA COMPLETO
         </a>
         <a href="questionario.html" class="btn btn--secondary">
           <i class="fa-solid fa-rotate-right"></i> TENTAR NOVAMENTE
         </a>
       </div>
+      <div class="garantia-badge">
+        <i class="fa-solid fa-shield-halved"></i> Garantia de 7 dias ou seu dinheiro de volta
+      </div>
     </div>
   `;
 
   document.getElementById('resultado-content').innerHTML = html;
 }
-
 function getBodySVG(biotipo) {
   if (biotipo === 'ectomorfo') {
     return `
